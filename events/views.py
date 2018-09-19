@@ -1,12 +1,12 @@
 from django.shortcuts import render
-
+from .models import Event
+from django.utils.timezone import localdate
 # Create your views here.
 def index(request):
     """ exibe a pagina principal de aplicações"""
-    context={
+    context= {
         'hide_new_button': True,
-        'priorities': event.priorities_list,
+        'priorities': Event.priorities_list,
         'today': localdate()
     }
-
-     return render(request, 'index.html', context)
+    return render(request, 'index.html', context)
