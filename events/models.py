@@ -19,8 +19,7 @@ class Event (models.Model):
     class Meta:
         ordering = ('-date', '-priority' 'event')
 
-
-    def model_of_comments(self):
+    def number_of_comments(self):
         return self.comment_event.count()
 
     def __str__(self):
@@ -38,7 +37,7 @@ class Comment (models.Model):
     """Retornar a partir do endereço de email, um avatar configurado"""
     def avatar(self):
         g = Gravatar(self.email)
-        return g.get_image(default='idention')
+        return g.get_image(default='identicon')
 
     def __str__(self):
         return "{} comentou em {:%c}".format(self.author, self.commented)
